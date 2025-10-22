@@ -1,5 +1,5 @@
 import React, { useDebugValue, useState } from 'react'
-import { AllWrap, LAstWrap, SecondAllwarp, SecondTodoContainer, ToDoContainer } from './todoStyle'
+import { AllInOneHeader, AllWrap, InputWrapPlus, LAstWrap, LiWrap, SecondAllwarp, SecondTodoContainer, ToDoContainer } from './todoStyle'
 import del from '../assets/todoasset/del.svg'
 import pluslo from '../assets/todoasset/pluslogo.png'
 
@@ -114,18 +114,33 @@ const addFunc = () => {
 
 }
 const deleetTask = (index) => {
-  setTodos(todos.filter((_, i) => i !== index))
+  const confirmDelete = window.confirm("Are you sure you want to delete this task?");
+  if (confirmDelete) {
+    setTodos(todos.filter((_, i) => i !== index))
+  }
 }
-
+const delAll = () => {
+  const confirmDelete = window.confirm("Are you sure you want to delete all tasks?");
+  if (confirmDelete) {
+  setTodos([])
+}
+}
   return (
     <LAstWrap>
-      <div>
+      <AllInOneHeader>
+      <p>ToDo App</p>
+      <InputWrapPlus>
       <input value={todo}  onChange={(e) => setTodo(e.target.value)} placeholder='type here...' type="text" />
-      <button onClick={addFunc}><img src={pluslo} alt="pluslo" /></button>
-      </div>
+      <button onClick={addFunc}>+</button>
+      </InputWrapPlus>
       <ul>
-        {todos.map((todo, index) => (<li key={index}>{index + 1}) {todo} <button onClick={() => deleetTask(index)}>delete</button></li>))}
+        {todos.map((todo, index) => ( <LiWrap key={index}><li >{todo}</li><button onClick={() => deleetTask(index)}>delete</button></LiWrap> ))}
       </ul>
+      <div className='bottompart'>
+        <p>You have {todos.length} active tasks</p>
+        <button onClick={delAll}>Clear All</button>
+      </div>
+      </AllInOneHeader>
     </LAstWrap>
   )
 }

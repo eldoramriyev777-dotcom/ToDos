@@ -226,13 +226,137 @@ li{
 
 export const LAstWrap = styled.div`
 display: flex;
+align-items: center;
+justify-content: center;
 flex-direction: column;
+min-height: 100vh;
 gap: 15px;
 padding: 25px;
+background-color: #00C6FF;
+background: linear-gradient(to bottom, #7FFFD4, #3A7BD5);
 img{
   width: 24px;
 }
 ul{
-  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  width: 100%;
+  gap: 10px;
+    button{
+      display: hidden;
+      background-color: #FF4B5C;
+      color: #FFFFFF;
+      transition: background 0.3s;
+      cursor: pointer;
+      border: none;
+    }  
+    button:hover{
+          background-color: #FF6B7C;
+    }
 }
 `
+export const LiWrap = styled.div`
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  li {
+    width: 100%;
+    min-height: fit-content;
+    list-style-type: none;
+    text-align: left;
+    background-color: #F0F0F0;
+    padding: 5px;
+    border-radius: 5px;
+    transition: border-radius 0.2s ease; /* silliq o‘tish */
+  }
+
+  button {
+    display: none;
+    max-height: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    font-size: 16px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  /* Hover paytida button chiqadi */
+  &:hover button {
+    display: flex;
+  }
+
+  /* Hover paytida li burchaklari o‘ng tomondan tekis bo‘ladi */
+  &:hover li {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+`;
+
+
+
+export const AllInOneHeader = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 15px;
+max-width: 500px;
+width: 100%;
+background-color: #FFFFFF;
+box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+padding: 20px;
+.bottompart{
+  display: flex;  
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+width: 100%;
+button{
+  background-color: #7B61FF;
+color: #FFFFFF;
+border-radius: 4px;
+border: none;
+font-size: 14px;
+transition: background 0.3s;
+padding: 6px 12px;
+cursor: pointer;
+}
+}
+`
+
+export const InputWrapPlus = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
+max-width: 90%;
+width: 100%;
+input{
+  width: 80%;
+  background-color: transparent;
+color: #000000;
+border-radius: 4px;
+padding: 8px;
+border: 1px solid #F0F0F0;
+}
+button{
+  background-color: #7B61FF;
+color: #FFFFFF;
+border-radius: 4px;
+border: none;
+font-size: 18px;
+transition: background 0.3s;
+cursor: pointer;
+padding: 6px 12px;
+}
+button:hover {
+    background-color: #935CFF;
+}
+`
+
