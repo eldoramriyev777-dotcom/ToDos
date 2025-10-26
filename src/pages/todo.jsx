@@ -51,3 +51,64 @@ const ToDosComponent = () => {
 }
 
 export default ToDosComponent
+
+function ToDolist ({title}) {
+  return <li>{title}</li>
+}
+
+function INPUT ({value, onChange}) {
+  return <input type="text" value={value} onChange={onChange}/>
+}
+
+export const NewLessonLearnComponent = () => {
+  const [inputValue, setInputValue] = useState("")
+  const [name, setName] = useState("")
+  const [surname, setSurname] = useState("")
+  const [color, setColor] = useState("lightseagreen")
+  const [key, setKey] = useState("")
+  const [count, setCount] = useState(0)
+  const [a, setA] = useState("")
+  const [b, setB] = useState("")
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    alert(`Your name is ${name} ${surname}`)
+    setSurname("")
+    setName("")
+  }
+  const handleKey = (e) => {
+    setKey(e.key)
+  }
+  return (
+    <div>
+      <input type="text" value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
+      <h1>Dear {inputValue ? inputValue : "Guest"}</h1>
+
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder='your name...' value={name} onChange={(e) => setName(e.target.value)}/>
+      <input type="text" placeholder='yuor surname...' value={surname} onChange={(e) => setSurname(e.target.value)}/>
+      <button type='submit'>Send</button>
+    </form>
+
+    <div style={{backgroundColor: color, padding: "20px", margin: "20px"}} 
+      onMouseEnter={() => setColor("coral")}
+      onMouseLeave={() => setColor("lightseagreen")}
+    >
+      <p>This is box</p>
+    </div>
+
+    <input type="text" placeholder='press any button...' onKeyDown={handleKey}/>
+    <p>Pressed Key: {key}</p>
+
+    <button onDoubleClick={() => setCount(count-4)} onClick={() => setCount(count+1)}>Count: {count}</button>
+
+    <ToDolist title={"Reading a book"}/>
+    <ToDolist title={"Coding for 4 hours"}/>
+    <ToDolist title={"Running in the morning"}/>
+
+    <INPUT value={a} onChange={(e) => setA(e.target.value)}/>
+    <INPUT value={b} onChange={(e) => setB(e.target.value)}/>
+    <p>Summ: {Number(a) + Number(b)}</p>
+    </div>
+  )
+}
